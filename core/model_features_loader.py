@@ -20,8 +20,8 @@ def get_best_model():
                 0,
                 text="Preparing best model download..."
             )
-            model_path = download_asset(file_path, progress_bar)
-            best_model = joblib.load(model_path)
+            model_file = download_asset(file_path, progress_bar)
+            best_model = joblib.load(model_file)
             progress_container.empty()
             return best_model
     return None
@@ -42,8 +42,8 @@ def get_features_types():
                 0,
                 text="Preparing features types download..."
             )
-            features_types_path = download_asset(file_path, progress_bar)
-            features_types = joblib.load(features_types_path)
+            features_types_file = download_asset(file_path, progress_bar)
+            features_types = joblib.load(features_types_file)
             progress_container.empty()
             return features_types
     return None
