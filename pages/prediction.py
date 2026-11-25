@@ -5,7 +5,7 @@ from core.model_features_loader import get_ready_asset
 st.title("Prediction")
 
 
-best_model = get_ready_asset("best_model.joblib")
+best_model = get_ready_asset("best_model.joblib", "Preparing best model download...")
 
 if best_model is None:
     st.write("No Model Detected For This Dataset")
@@ -15,7 +15,7 @@ if st.session_state.get('current_dataset') != st.session_state.dataset_path:
 
     st.session_state.current_dataset = st.session_state.dataset_path
 
-    st.session_state.features_name = get_ready_asset("features_types.joblib")
+    st.session_state.features_name = get_ready_asset("features_types.joblib", "Preparing features types download...")
     if st.session_state.features_name is None:
         st.write("No Features Detected For This Dataset")
         st.stop()        
