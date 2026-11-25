@@ -17,8 +17,15 @@ with st.sidebar:
     project_name = st.selectbox("select the dataset to work with it", projects_name)
     st.session_state.project = project_name
     st.session_state.dataset_path = datasets_path[project_name]
-    st.session_state.dataset = get_data(st.session_state.dataset_path)
     if st.session_state.dataset_path is not None:
         st.write(st.session_state.dataset_path)
-    
+
+# Main page progress bar
+progress_container = st.empty()
+progress_bar = progress_container.progress(
+    0,
+    text="Preparing dataset download..."
+)
+st.session_state.dataset = get_data(st.session_state.dataset_path, progress_bar)
+progress_container.empty()
 pages.run()
