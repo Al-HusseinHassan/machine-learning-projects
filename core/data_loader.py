@@ -3,7 +3,6 @@ import pandas as pd
 import os
 from huggingface_hub import list_repo_files
 import streamlit as st
-from core.model_features_loader import get_best_model
 from core.asset_loader import download_asset
 
 def get_datasets_path():

@@ -1,14 +1,11 @@
 import streamlit as st
-import os
-import joblib
 import pandas as pd
-from config import PROJECTS_PATH
-from core.model_features_loader import get_best_model, get_features_types
+from core.model_features_loader import get_ready_asset
 
 st.title("Prediction")
 
 
-best_model = get_best_model()
+best_model = get_ready_asset("best_model.joblib")
 
 if best_model is None:
     st.write("No Model Detected For This Dataset")
@@ -18,7 +15,7 @@ if st.session_state.get('current_dataset') != st.session_state.dataset_path:
 
     st.session_state.current_dataset = st.session_state.dataset_path
 
-    st.session_state.features_name = get_features_types()
+    st.session_state.features_name = get_ready_asset("features_types.joblib")
     if st.session_state.features_name is None:
         st.write("No Features Detected For This Dataset")
         st.stop()        
