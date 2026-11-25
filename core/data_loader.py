@@ -20,10 +20,6 @@ def get_datasets_path():
                 hf_dataset_path = hf_project_file
                 datasets_path[project_name] = hf_dataset_path
                 break
-    st.write("PROJECTS_PATH:", PROJECTS_PATH)
-    st.write("Directory exists:", os.path.exists(PROJECTS_PATH))
-    st.write("Local projects:", projects_names)
-    st.write("HF files:", hf_files_paths)
     return datasets_path
 
 def get_data(path: str, progress_bar) -> pd.DataFrame:
